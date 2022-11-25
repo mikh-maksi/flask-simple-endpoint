@@ -46,8 +46,6 @@ celery.conf.update(app.config)
 #     return 'Database created'
 
 
-
-
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
