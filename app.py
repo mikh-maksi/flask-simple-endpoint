@@ -93,6 +93,21 @@ action1_schema = Action1Schema()
 def hello_world():
     return "<p>Hello, World!</p>"
 
+@app.route("/jsn")
+def jsn():
+    x = {
+        "name": "John",
+        "age": 30,
+        "married": True,
+        "divorced": False,
+        "children": ("Ann","Billy"),
+        "pets": None,
+        "cars": [
+            {"model": "BMW 230", "mpg": 27.5},
+            {"model": "Ford Edge", "mpg": 24.1}
+        ]
+        }
+    return json.dumps(x)
 
 @app.route("/actions",methods=['GET'])
 def actions():
