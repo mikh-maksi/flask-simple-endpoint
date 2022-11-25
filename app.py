@@ -15,7 +15,7 @@ from datetime import datetime
 
 
 # db = create_engine('postgresql+psycopg2://jjjvxftvljouqa:a41a7e3069600c2daa7ed7e917e26216fbd28f517719f517c4529b994bb8e430@ec2-34-248-169-69.eu-west-1.compute.amazonaws.com:5432/dfmbp1l6kre1rn')
-db = create_engine('postgresql+psycopg2://fuvnjouopjkqjz:457d26bac4530137e6f5fe1cf70d0b89ce4a9659c00fc076186ba123329495db@ec2-99-81-137-11.eu-west-1.compute.amazonaws.com:5432/dffjdini6butuh')
+# db = create_engine('postgresql+psycopg2://fuvnjouopjkqjz:457d26bac4530137e6f5fe1cf70d0b89ce4a9659c00fc076186ba123329495db@ec2-99-81-137-11.eu-west-1.compute.amazonaws.com:5432/dffjdini6butuh')
 # create the app
 app = Flask(__name__)
 
@@ -26,24 +26,24 @@ app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
 celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
 celery.conf.update(app.config)
 
-base = declarative_base()
+# base = declarative_base()
 
-Session = sessionmaker(db)
-session = Session()
+# Session = sessionmaker(db)
+# session = Session()
 
 
-ma = Marshmallow(app)
+# ma = Marshmallow(app)
 
-@app.cli.command('db_create')
-def db_create():
-    base.metadata.create_all(db)
-    print('Database created')
-    return 'Database created'
+# @app.cli.command('db_create')
+# def db_create():
+#     base.metadata.create_all(db)
+#     print('Database created')
+#     return 'Database created'
 
-@app.route("/db_create")
-def db_create_all():
-    base.metadata.create_all(db)
-    return 'Database created'
+# @app.route("/db_create")
+# def db_create_all():
+#     base.metadata.create_all(db)
+#     return 'Database created'
 
 
 
